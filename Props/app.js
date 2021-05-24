@@ -86,3 +86,151 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
+// Render Different UI Based on props
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Greeting } from './Greeting';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>
+          Hullo and, "Welcome to The Newzz," "On Line!"
+        </h1>
+        <Greeting signedIn={true} name="Alison" />
+        <article>
+          Latest:  where is my phone?
+        </article>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />, 
+  document.getElementById('app')
+);
+
+// Put an Event Handler in a Component Class
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from './Button';
+
+class Talker extends React.Component {
+  talk () {
+    let speech = '';
+    for (let i = 0; i < 10000; i++) {
+      speech += 'blah ';
+    }
+    alert(speech);
+  }
+  
+  render() {
+    return <Button />;
+  }
+}
+
+ReactDOM.render(
+  <Talker />,
+  document.getElementById('app')
+);
+
+// Pass an Event Handler as a prop
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from './Button';
+
+class Talker extends React.Component {
+  talk() {
+    let speech = '';
+    for (let i = 0; i < 10000; i++) {
+      speech += 'blah ';
+    }
+    alert(speech);
+  }
+  
+  render() {
+    return <Button talk={this.talk} />;
+  }
+}
+
+ReactDOM.render(
+  <Talker />,
+  document.getElementById('app')
+);
+
+// Receive an Event Handler as a prop
+import React from 'react';
+
+export class Button extends React.Component {
+  render() {
+    return (
+      <button onClick={this.props.talk}>
+        Click me!
+      </button>
+    );
+  }
+}
+
+// handleEvent, onEvent, and this.props.onEvent
+import React from 'react';
+
+export class Button extends React.Component {
+  render() {
+    return (
+      <button onClick={this.props.onClick}>
+        Click me!
+      </button>
+    );
+  }
+}
+
+// this.props.children
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { List } from './List';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <List type='Living Musician'>
+          <li>Sachiko M</li>
+          <li>Harvey Sid Fisher</li>
+        </List>
+        <List type='Living Cat Musician'>
+          <li>Nora the Piano Cat</li>
+          <li>Second Piano Cat</li>
+        </List>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />, 
+  document.getElementById('app')
+);
+
+// defaultProps
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Button extends React.Component {
+  render() {
+    return (
+      <button>
+        {this.props.text}
+      </button>
+    );
+  }
+}
+
+// defaultProps goes here:
+Button.defaultProps = {text:'I am a button'};
+
+ReactDOM.render(
+  <Button text=""/>, 
+  document.getElementById('app')
+);
